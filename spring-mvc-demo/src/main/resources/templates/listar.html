@@ -32,6 +32,7 @@
 				<th scope="col">Nome</th>
 				<th scope="col">Sobrenome</th>
 				<th scope="col">Sexo</th>
+				<th scope="col">Data Nascimento</th>
 				<th scope="col">#</th>
 				<th scope="col">#</th>
 			</tr>
@@ -42,6 +43,7 @@
 				<td th:text="${pessoa.nome}"></td>
 				<td th:text="${pessoa.sobrenome}"></td>
 				<td th:text="${pessoa.sexo}"></td>
+				<td th:text="${pessoa.dataNascimento}"></td>
 				<td><a
 					th:href="@{/pessoas/editar/{codigo}(codigo=${pessoa.codigo})}">Editar</a>
 				</td>
