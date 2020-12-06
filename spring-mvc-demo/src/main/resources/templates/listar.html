@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<title>Listagem Pessoas</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+</head>
+
+<body>
+	<header>
+		<nav class="navbar navbar-light bg-light">
+			<span class="navbar-brand mb-0 h1" style="font-weight: bold;">Lista de pessoas 
+				API</span><a href="/pessoas/salvar" class="btn btn-primary" role="button">Salvar
+				uma nova pessoa</a>
+		</nav>
+	</header>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Nome</th>
+				<th scope="col">Sobrenome</th>
+				<th scope="col">Sexo</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="pessoa:${pessoas}">
+				<th scope="row" th:text="${pessoa.codigo}"></th>
+				<td th:text="${pessoa.nome}"></td>
+				<td th:text="${pessoa.sobrenome}"></td>
+				<td th:text="${pessoa.sexo}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

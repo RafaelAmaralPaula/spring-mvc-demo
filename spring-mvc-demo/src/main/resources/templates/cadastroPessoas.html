@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<title>Cadastro de Pessoas</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-light bg-light">
+			<span class="navbar-brand mb-0 h1" style="font-weight: bold;">Cadastrando
+				nova pessoa </span><a href="/pessoas/listar" class="btn btn-primary"
+				role="button">Voltar para tela inicial</a>
+		</nav>
+	</header>
+
+	<form method="post">
+
+		<div class="form-group">
+			<input type="text" class="form-control" name="nome"
+				placeholder="Digite Nome*"
+				style="text-align: center; width: 550px; margin-left: 380px; margin-top: 50px;">
+		</div>
+
+		<div class="form-group">
+			<input type="text" class="form-control" name="sobrenome"
+				placeholder="Digite Sobrenome"
+				style="text-align: center; width: 550px; margin-left: 380px; margin-top: 50px;">
+		</div>
+
+		<div class="col-md-3 mb-3">
+			 <select
+				class="custom-select" id="validationDefault04" name="sexo" style="margin-left: 365px; margin-top: 30px;">
+				<option selected disabled value="">Selecione Sexo</option>
+				<option>MASCULINO</option>
+				<option>FEMININO</option>
+			</select>
+		</div>
+		<button type="submit" class="btn btn-primary"
+			style="margin-top: 10px; margin-left: 42%; width: 20%;">Salvar</button>
+	</form>
+</body>
