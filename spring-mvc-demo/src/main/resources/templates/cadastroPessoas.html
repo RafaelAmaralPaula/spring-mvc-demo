@@ -16,6 +16,12 @@
 		</nav>
 	</header>
 
+
+	<div class="alert alert-primary" role="alert" th:each="msg : ${mensagemerros}" 
+			style="width:500px; margin-left: 32%; text-align: center; color: white; background-color: red;">
+		<span th:text="${msg}"></span>
+	</div>
+	
 	<form action="salvar" method="post" th:object="${pessoaobj}">
 
 		<div class="form-group">

@@ -1,9 +1,14 @@
 package com.springmvcdemo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,10 +44,30 @@ public class PessoaController {
 	}
 
 	@PostMapping("**/salvar")
-	public String salvar(Pessoa pessoa) {
+	public ModelAndView salvar(@Valid Pessoa pessoa , BindingResult bindingResult) {
+		
+		if(bindingResult.hasErrors()) {
+			ModelAndView  modelAndView = new ModelAndView("cadastroPessoas");
+			
+			List<String> listErros = new ArrayList<>();
+			
+			for (ObjectError erros : bindingResult.getAllErrors()) {
+				listErros.add(erros.getDefaultMessage());
+			}
+			modelAndView.addObject("mensagemerros", listErros);
+			modelAndView.addObject("pessoaobj", pessoa);
+			
+			return modelAndView;
+			
+		}
+		
 		pessoaRepository.save(pessoa);
+		
+		ModelAndView  modelAndView = new ModelAndView("listar");
+		modelAndView.addObject("pessoas", pessoaRepository.findAll());
+		modelAndView.addObject("pessoaobj", new Pessoa());
 
-		return "redirect:/pessoas/listar";
+		return modelAndView;
 	}
 
 	@GetMapping("/editar/{codigo}")

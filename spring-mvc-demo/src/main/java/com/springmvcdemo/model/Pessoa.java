@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -23,10 +25,15 @@ public class Pessoa {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo;
 
+	@NotEmpty(message = "Nome não pode ser vázio")
+	@NotNull(message = "Nome não pode ser nullo")
 	private String nome;
 
+	@NotEmpty(message = "Sobrenome não pode ser vázio")
+	@NotNull(message = "Sobrenome não pode ser nullo")
 	private String sobrenome;
 
+	@NotNull(message = "Data nascimento não pode ser nulla")
 	@Column(name = "data_nascimento")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
